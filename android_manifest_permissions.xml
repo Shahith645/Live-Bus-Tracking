@@ -1,0 +1,32 @@
+<!--
+  ADD THESE INSIDE <manifest> IN: android/app/src/main/AndroidManifest.xml
+  (as siblings of the <application> tag, i.e. direct children of <manifest>)
+-->
+
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
+<!--
+  Also required inside <application> for image_picker camera capture on some devices:
+
+  <provider
+      android:name="androidx.core.content.FileProvider"
+      android:authorities="${applicationId}.fileprovider"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/file_paths" />
+  </provider>
+
+  Also set minSdkVersion to at least 21 in android/app/build.gradle:
+      defaultConfig {
+          minSdkVersion 21
+          ...
+      }
+-->
